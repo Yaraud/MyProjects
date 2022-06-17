@@ -1,9 +1,13 @@
 package com.hfad.registerapp
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -16,6 +20,26 @@ import kotlinx.coroutines.launch
 import javax.mail.internet.InternetAddress
 
 class ResetFragment : Fragment() {
+
+    private fun isOnline(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (connectivityManager != null) {
+            val capabilities =
+
+                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (capabilities != null) {
+                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                    return true
+                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    return true
+                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 
     private val viewModel: AccountViewModel by activityViewModels {
         AccountViewModelFactory(
@@ -101,14 +125,21 @@ class ResetFragment : Fragment() {
                         )
                         val emailService = EmailService("smtp.gmail.com", 587)
 
-                        GlobalScope.launch {
-                            emailService.send(mail)
+                        if (context?.let { it -> isOnline(it) } == true) {
+                            GlobalScope.launch {
+                                emailService.send(mail)
+                            }
+                            viewModel.resetPassword(email, confirmPassword)
+                            val action = ResetFragmentDirections.actionResetFragmentToLoginFragment("")
+                            view.findNavController().navigate(action)
+                        }
+                        else {
+                            val toast = Toast.makeText(context,"Check your internet connection",
+                                Toast.LENGTH_SHORT)
+                            toast.show()
                         }
 
-                        viewModel.resetPassword(email, confirmPassword)
 
-                        val action = ResetFragmentDirections.actionResetFragmentToLoginFragment("")
-                        view.findNavController().navigate(action)
                     }
                 }
             }
