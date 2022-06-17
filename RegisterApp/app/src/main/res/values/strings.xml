@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">RegisterApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Already have an account? Sign in</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="short_password">Password should contain at least 8 characters</string>
+    <string name="wrong_password">Password does`t match</string>
+    <string name="wrong_email_syntax">Wrong email syntax</string>
+    <string name="wrong_email">No such email</string>
+    <string name="repeat_email">There is an account with the same email</string>
+    <string name="sign_up_2">Don`t have an account? Sign up</string>
+    <string name="sign_in_2">Sign In</string>
+    <string name="forget_your_password">Forget your password?</string>
+    <string name="reset">Reset</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="registered">You\'re registered successfully</string>
+    <string name="login_error">Wrong password or email</string>
+    <string name="welcome_text">%1$s, welcome to your account!</string>
+
+</resources>
