@@ -13,7 +13,6 @@ import com.hfad.registerapp.viewmodels.AccountViewModelFactory
 import com.hfad.registerapp.viewmodels.EmailService
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.mail.internet.InternetAddress
 
 class ResetFragment : Fragment() {
@@ -86,6 +85,7 @@ class ResetFragment : Fragment() {
                         setPasswordMatchError(true)
                     else {
                         setPasswordMatchError(false)
+
                         val auth = EmailService.UserPassAuthenticator(
                             "stelarik52@gmail.com",
                             "nngypeafumotfjay"
