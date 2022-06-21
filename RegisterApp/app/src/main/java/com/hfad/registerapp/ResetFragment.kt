@@ -15,7 +15,8 @@ import com.hfad.registerapp.databinding.FragmentResetBinding
 import com.hfad.registerapp.viewmodels.AccountViewModel
 import com.hfad.registerapp.viewmodels.AccountViewModelFactory
 import com.hfad.registerapp.viewmodels.EmailService
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.mail.internet.InternetAddress
 
@@ -24,16 +25,17 @@ class ResetFragment : Fragment() {
     private fun isOnline(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivityManager != null) {
-            val capabilities =
-
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            if (capabilities != null) {
-                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            when {
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
                     return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                }
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
                     return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                }
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
                     return true
                 }
             }
@@ -53,7 +55,7 @@ class ResetFragment : Fragment() {
     private fun setEmailError(error: Boolean) {
         if (error) {
             binding.textInputLayout1.isErrorEnabled = true
-            binding.textInputLayout1.error = getString(R.string.wrong_email)
+            binding.textInputLayout1.error = getString(R.string.com_hfad_registerapp_wrong_email)
         } else {
             binding.textInputLayout1.isErrorEnabled = false
         }
@@ -62,7 +64,7 @@ class ResetFragment : Fragment() {
     private fun setPasswordLengthError(error: Boolean) {
         if (error) {
             binding.textInputLayout2.isErrorEnabled = true
-            binding.textInputLayout2.error = getString(R.string.short_password)
+            binding.textInputLayout2.error = getString(R.string.com_hfad_registerapp_short_password)
         } else {
             binding.textInputLayout2.isErrorEnabled = false
         }
@@ -71,21 +73,16 @@ class ResetFragment : Fragment() {
     private fun setPasswordMatchError(error: Boolean) {
         if (error) {
             binding.textInputLayout3.isErrorEnabled = true
-            binding.textInputLayout3.error = getString(R.string.wrong_password)
+            binding.textInputLayout3.error = getString(R.string.com_hfad_registerapp_wrong_password)
         } else {
             binding.textInputLayout3.isErrorEnabled = false
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentResetBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -125,8 +122,8 @@ class ResetFragment : Fragment() {
                         )
                         val emailService = EmailService("smtp.gmail.com", 587)
 
-                        if (context?.let { it -> isOnline(it) } == true) {
-                            GlobalScope.launch {
+                        if (context?.let { it1 -> isOnline(it1) } == true) {
+                            CoroutineScope(Dispatchers.IO).launch {
                                 emailService.send(mail)
                             }
                             viewModel.resetPassword(email, confirmPassword)

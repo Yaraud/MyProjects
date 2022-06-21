@@ -1,6 +1,5 @@
 package com.hfad.registerapp.database.account
 
-import android.provider.ContactsContract
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity

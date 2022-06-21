@@ -10,7 +10,7 @@ class AccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_account)
         val email = intent?.extras?.getString("email").toString()
         val welcomeTextView = findViewById<TextView>(R.id.welcomeText)
-        welcomeTextView.text = getString(R.string.welcome_text,email)
+        welcomeTextView.text = getString(R.string.com_hfad_registerapp_welcome_text,email)
 
     }
 }

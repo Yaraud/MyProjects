@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.hfad.registerapp.databinding.FragmentLoginBinding
-import com.hfad.registerapp.databinding.FragmentRegisterBinding
 import com.hfad.registerapp.viewmodels.AccountViewModel
 import com.hfad.registerapp.viewmodels.AccountViewModelFactory
 
@@ -37,9 +35,9 @@ class LoginFragment : Fragment() {
     private fun setError(error: Boolean) {
         if (error) {
             binding.textInputLayout1.isErrorEnabled = true
-            binding.textInputLayout1.error = getString(R.string.login_error)
+            binding.textInputLayout1.error = getString(R.string.com_hfad_registerapp_login_error)
             binding.textInputLayout2.isErrorEnabled = true
-            binding.textInputLayout2.error = getString(R.string.login_error)
+            binding.textInputLayout2.error = getString(R.string.com_hfad_registerapp_login_error)
         } else {
             binding.textInputLayout1.isErrorEnabled = false
         }
@@ -55,7 +53,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -75,6 +73,7 @@ class LoginFragment : Fragment() {
             if (viewModel.getIdByEmailAndPassword(email, password) == 0)
                 setError(true)
             else {
+                setError(false)
                 val intent = Intent(context, AccountActivity::class.java)
                 intent.putExtra("email", email)
                 context?.startActivity(intent)

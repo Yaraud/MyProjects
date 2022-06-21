@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.hfad.registerapp.database.account.Account
 import com.hfad.registerapp.database.account.AccountDao
 
-@Database(entities = arrayOf(Account::class), version = 1)
+@Database(entities = [Account::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract  fun accountDao(): AccountDao
     companion object {

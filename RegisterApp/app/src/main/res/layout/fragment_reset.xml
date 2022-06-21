@@ -6,117 +6,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp">
+    tools:layout_editor_absoluteY="1dp"
+    >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
         android:focusableInTouchMode="true"
         android:focusable="true"
-        tools:context=".MainActivity">
-
+        tools:context=".MainActivity"
+        >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="300dp"
-            android:layout_height="95dp"
+            android:layout_width="@dimen/text_input_layout_width_normal"
+            android:layout_height="@dimen/text_input_layout_height_normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.15">
+            app:layout_constraintVertical_bias="0.15"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/email"
+                android:layout_height="@dimen/edit_text_height_normal"
+                android:hint="@string/com.hfad.registerapp.email"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:textColorHint="#616161"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                style="@style/EditTextStyle"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="300dp"
-            android:layout_height="95dp"
-            app:endIconMode="password_toggle"
+            android:layout_width="@dimen/text_input_layout_width_normal"
+            android:layout_height="@dimen/text_input_layout_height_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1"
+            app:endIconMode="password_toggle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextNewPassword"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/new_password"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:textColorHint="#616161"
-                tools:ignore="TextContrastCheck" />
+                android:layout_height="@dimen/edit_text_height_normal"
+                android:hint="@string/com.hfad.registerapp.new_password"
+                tools:ignore="TextContrastCheck"
+                style="@style/EditTextStyle"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="300dp"
-            android:layout_height="95dp"
-            app:endIconMode="password_toggle"
+            android:layout_width="@dimen/text_input_layout_width_normal"
+            android:layout_height="@dimen/text_input_layout_height_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            app:endIconMode="password_toggle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextConfirmPassword"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/confirm_password"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:textColorHint="#616161"
-                tools:ignore="TextContrastCheck" />
+                android:layout_height="@dimen/edit_text_height_normal"
+                android:hint="@string/com.hfad.registerapp.confirm_password"
+                tools:ignore="TextContrastCheck"
+                style="@style/EditTextStyle"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/resetBtn"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/button_height_normal"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/bluePrimary"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="@string/reset"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            tools:ignore="TextContrastCheck" />
+            android:text="@string/com.hfad.registerapp.reset"
+            tools:ignore="TextContrastCheck"
+            style="@style/ButtonStyle"
+            />
 
         <Button
             android:id="@+id/signUpBtn"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="286dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/white"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="@string/sign_up_2"
-            android:textColor="@color/bluePrimary"
-            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height_normal"
             app:layout_constraintStart_toStartOf="@+id/resetBtn"
             app:layout_constraintTop_toBottomOf="@+id/resetBtn"
-            tools:ignore="TextContrastCheck" />
+            android:text="@string/com.hfad.registerapp.sign_up_2"
+            tools:ignore="TextContrastCheck"
+            style="@style/TextButtonStyle"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
