@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GeoApp</string>
+    <string name="geoapp_map">Map</string>
+    <string name="geoapp_points">Points</string>
+    <string name="geoapp_settings">Settings</string>
+    <string name="geoapp_open_dialog">openDialogForNewPoint</string>
+    <string name="geoapp_rename_point">RenamePoint</string>
+    <string name="geoapp_delete_point">DeletePoint</string>
+    <string name="geoapp_delete_all_points">Delete All Points</string>
+    <string name="geoapp_confirm">Confirm</string>
+</resources>

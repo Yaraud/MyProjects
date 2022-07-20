@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/drawable/layout_border.xml" value="0.2925" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/drawable/map.xml" value="0.266" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/activity_main.xml" value="0.3392210144927536" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/activity_maps.xml" value="0.3392210144927536" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/button_layout.xml" value="0.365625" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/fragment_blank.xml" value="0.28229166666666666" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/fragment_maps.xml" value="0.31302083333333336" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/fragment_points.xml" value="0.33" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/fragment_settings.xml" value="0.358695652173913" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/layout/point_item.xml" value="0.5" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/menu/delete_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/xml-v26/layout_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/android(projects)/GeoApp/app/src/main/res/xml/layout_settings.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

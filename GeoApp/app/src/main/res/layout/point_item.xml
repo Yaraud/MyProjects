@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_border"
+    >
+
+    <TextView
+        android:id="@+id/point_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/MainText"
+        />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/point_name"
+        app:layout_constraintTop_toBottomOf="@+id/point_name"
+        style="@style/AdditionalText"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/rename_point_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/geoapp_rename_point"
+        android:src="@drawable/baseline_drive_file_rename_outline_black_24"
+        app:fabSize="mini"
+        tools:ignore="ImageContrastCheck"
+        style="@style/FloatingButtonStyle"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_point_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rename_point_button"
+        app:layout_constraintTop_toBottomOf="@+id/rename_point_button"
+        android:contentDescription="@string/geoapp_delete_point"
+        android:src="@drawable/baseline_delete_black_24"
+        app:fabSize="mini"
+        tools:ignore="ImageContrastCheck"
+        style="@style/FloatingButtonStyle"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

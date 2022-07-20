@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pp="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/delete_all_items"
+        android:enabled="true"
+        android:icon="@drawable/baseline_delete_forever_black_36"
+        android:title="@string/geoapp_delete_all_points"
+        pp:showAsAction="ifRoom"/>
+</menu>
