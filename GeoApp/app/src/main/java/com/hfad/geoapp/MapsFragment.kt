@@ -62,6 +62,7 @@ class MapsFragment : Fragment() {
     private var myLatitude = 0.0
     private var myLongitude = 0.0
     private lateinit var locationService: LocationService
+    //private lateinit var connection: ServiceConnection
     private var mBound: Boolean = false
     private var isServiceRunning = false
     private lateinit var serviceIntent: Intent
@@ -238,11 +239,13 @@ class MapsFragment : Fragment() {
     }
 
     private fun checkDistance(){
-        val frequency = viewModel.getFrequency().toLong()*60000
+        val frequency = viewModel.getFrequency().toLong()*6000
+        if (mBound){
+            locationService.LocalBinder().setFrequency(frequency)
+        }
         object : CountDownTimer(Long.MAX_VALUE,frequency) {
             override fun onTick(millisUntilFinished: Long) {
                 if (mBound) {
-                    locationService.LocalBinder().setFrequency(frequency)
                     myLatitude = locationService.LocalBinder().getLat()
                     myLongitude = locationService.LocalBinder().getLon()
                 }
@@ -267,10 +270,7 @@ class MapsFragment : Fragment() {
                                     viewModel.getCoordinates(d.key).latitude,
                                     viewModel.getCoordinates(d.key).longitude
                                 )
-                                Toast.makeText(context,"Choose another point${viewModel.getCoordinates(d.key).latitude}, " +
-                                        "${viewModel.getCoordinates(d.key).longitude} ",
-                                    Toast.LENGTH_SHORT)
-                                    .show()
+
                                 break
                             }
                         }
@@ -300,7 +300,7 @@ class MapsFragment : Fragment() {
             val binder = service as LocationService.LocalBinder
             locationService = binder.getService()
             mBound = true
-
+            locationService.LocalBinder().setFrequency(viewModel.getFrequency().toLong()*6000)
         }
         override fun onServiceDisconnected(arg0: ComponentName) {
             mBound = false

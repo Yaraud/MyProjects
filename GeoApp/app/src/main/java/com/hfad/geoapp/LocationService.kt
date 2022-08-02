@@ -7,6 +7,8 @@ import android.content.pm.PackageManager
 import android.os.Binder
 import android.os.IBinder
 import android.os.Looper
+import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationRequest.*
@@ -31,11 +33,10 @@ class LocationService : Service() {
                 val location = locationList.last()
                 myLatitude = location.latitude
                 myLongitude = location.longitude
-//                Toast.makeText(this@LocationService, "Latitude: $myLatitude\n" +
-//                        "Longitude: $myLongitude", Toast.LENGTH_LONG).show()
-//                val intent = Intent(applicationContext,MapsFragment::class.java)
-//                intent.putExtra("myLatitude",myLatitude)
-//                intent.putExtra("myLongitude",myLatitude)
+                Log.d("DEBUG interval","${locationRequest.interval}")
+                Toast.makeText(this@LocationService, "Latitude: $myLatitude\n" +
+                        "Longitude: $myLongitude, ${locationRequest.interval}", Toast.LENGTH_LONG)
+                    .show()
 
             }
         }
@@ -73,8 +74,10 @@ class LocationService : Service() {
         fun getLat(): Double = myLatitude
         fun getLon(): Double = myLongitude
         fun setFrequency(freq: Long){
-            frequency = freq
+            locationRequest.interval=freq
+            locationRequest.fastestInterval = freq
+            locationRequest.maxWaitTime = freq
+            fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
         }
     }
-
 }
