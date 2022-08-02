@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.os.Binder
 import android.os.IBinder
 import android.os.Looper
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationRequest.*
@@ -18,10 +17,11 @@ class LocationService : Service() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var myLatitude = 0.0
     private var myLongitude = 0.0
+    private var frequency: Long = 0
     private val locationRequest: LocationRequest = create().apply {
-        interval = 100
-        fastestInterval = 100
-        maxWaitTime = 100
+        interval = frequency
+        fastestInterval = frequency
+        maxWaitTime = frequency
     }
 
     private var locationCallback: LocationCallback = object : LocationCallback() {
@@ -33,9 +33,9 @@ class LocationService : Service() {
                 myLongitude = location.longitude
 //                Toast.makeText(this@LocationService, "Latitude: $myLatitude\n" +
 //                        "Longitude: $myLongitude", Toast.LENGTH_LONG).show()
-                val intent = Intent(applicationContext,MapsFragment::class.java)
-                intent.putExtra("myLatitude",myLatitude)
-                intent.putExtra("myLongitude",myLatitude)
+//                val intent = Intent(applicationContext,MapsFragment::class.java)
+//                intent.putExtra("myLatitude",myLatitude)
+//                intent.putExtra("myLongitude",myLatitude)
 
             }
         }
@@ -45,13 +45,10 @@ class LocationService : Service() {
         super.onCreate()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED
             && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
             != PackageManager.PERMISSION_GRANTED) {
-
-            Toast.makeText(applicationContext, "Permission required", Toast.LENGTH_LONG).show()
             return
         }else{
             fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
@@ -75,6 +72,9 @@ class LocationService : Service() {
         fun getService(): LocationService = this@LocationService
         fun getLat(): Double = myLatitude
         fun getLon(): Double = myLongitude
+        fun setFrequency(freq: Long){
+            frequency = freq
+        }
     }
 
 }

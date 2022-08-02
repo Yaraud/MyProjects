@@ -238,11 +238,11 @@ class MapsFragment : Fragment() {
     }
 
     private fun checkDistance(){
-        object : CountDownTimer(Long.MAX_VALUE,
-            viewModel.getFrequency().toLong()*60000) {
-
+        val frequency = viewModel.getFrequency().toLong()*60000
+        object : CountDownTimer(Long.MAX_VALUE,frequency) {
             override fun onTick(millisUntilFinished: Long) {
                 if (mBound) {
+                    locationService.LocalBinder().setFrequency(frequency)
                     myLatitude = locationService.LocalBinder().getLat()
                     myLongitude = locationService.LocalBinder().getLon()
                 }
