@@ -1,44 +1,49 @@
 package com.hfad.geoapp
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
-import com.hfad.geoapp.viewmodels.PointViewModel
-import com.hfad.geoapp.viewmodels.PointViewModelFactory
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.hfad.geoapp.databinding.FragmentSettingsBinding
 
 
-class SettingsFragment : PreferenceFragmentCompat() {
+class SettingsFragment : Fragment() {
 
+    private var _binding: FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
 
-    private var distance: Int = 100
-    private var frequency: Int = 1
-    private val viewModel: PointViewModel by activityViewModels {
-        PointViewModelFactory(
-            (activity?.application as GeoApplication).database.pointDao()
-             , (activity?.application as GeoApplication).database.settingsDao()
-        )
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSettingsBinding.inflate(inflater,container, false)
+        return binding.root
     }
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.layout_settings, rootKey)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         (activity as AppCompatActivity).supportActionBar?.title = "Settings"
-        val defValue1 = 100
-        val defValue2 = 1
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        distance = sharedPreferences.getInt("distance",defValue1)
-        frequency = sharedPreferences.getInt("frequency",defValue2)
-        sharedPreferences.registerOnSharedPreferenceChangeListener { preferences, key ->
-            when(key){
-                "distance" -> distance = preferences.getInt(key,defValue1)
-                "frequency" -> frequency = preferences.getInt(key,defValue2)
+        binding.bottomNavigation.selectedItemId = R.id.settings_item
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.map_item -> {
+                    val action = SettingsFragmentDirections.actionSettingsFragmentToMapsFragment(0.0F,0.0F)
+                    view.findNavController().navigate(action)
+                    true
+                }
+                R.id.points_item -> {
+                    val action = SettingsFragmentDirections.actionSettingsFragmentToPointsFragment()
+                    view.findNavController().navigate(action)
+                    true
+                }
+                R.id.settings_item -> {
+                    true
+                }
+                else -> false
             }
         }
-    }
-
-    override fun onStop() {
-        super.onStop()
-        viewModel.updateSettings(distance,frequency)
     }
 }
