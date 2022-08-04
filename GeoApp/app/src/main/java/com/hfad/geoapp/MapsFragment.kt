@@ -238,7 +238,7 @@ class MapsFragment : Fragment() {
     }
 
     private fun checkDistance(){
-        val frequency = viewModel.getFrequency().toLong()*6000
+        val frequency = viewModel.getFrequency().toLong()*60000
         if (mBound){
             locationService.LocalBinder().setFrequency(frequency)
         }
@@ -299,7 +299,7 @@ class MapsFragment : Fragment() {
             val binder = service as LocationService.LocalBinder
             locationService = binder.getService()
             mBound = true
-            locationService.LocalBinder().setFrequency(viewModel.getFrequency().toLong()*6000)
+            locationService.LocalBinder().setFrequency(viewModel.getFrequency().toLong()*60000)
         }
         override fun onServiceDisconnected(arg0: ComponentName) {
             mBound = false
