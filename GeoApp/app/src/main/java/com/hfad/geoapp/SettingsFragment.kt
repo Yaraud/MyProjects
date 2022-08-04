@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -25,6 +26,11 @@ class SettingsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        val frag: MyPreferenceFragment = childFragmentManager.findFragmentById(R.id.myPreferenceFragment)
+//                as MyPreferenceFragment
+//        val dist = frag.getDistance()
+//        val freq = frag.getFrequency()
+//        Toast.makeText(context,"$dist,$freq", Toast.LENGTH_SHORT).show()
         (activity as AppCompatActivity).supportActionBar?.title = "Settings"
         binding.bottomNavigation.selectedItemId = R.id.settings_item
         binding.bottomNavigation.setOnItemSelectedListener { item ->

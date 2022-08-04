@@ -9,7 +9,7 @@
     tools:context=".MainActivity"
     >
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/setting"
+        android:id="@+id/myPreferenceFragment"
         android:name="com.hfad.geoapp.MyPreferenceFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

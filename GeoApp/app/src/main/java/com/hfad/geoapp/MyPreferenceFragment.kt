@@ -1,6 +1,7 @@
 package com.hfad.geoapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceFragmentCompat
@@ -16,12 +17,11 @@ class MyPreferenceFragment : PreferenceFragmentCompat() {
             , (activity?.application as GeoApplication).database.settingsDao()
         )
     }
-    companion object{
-        private var distance: Int = 100
-        private var frequency: Int = 1
-    }
 
-
+    private var distance: Int = 100
+    private var frequency: Int = 1
+    fun getDistance(): Int = distance
+    fun getFrequency(): Int = frequency
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.layout_settings, rootKey)
@@ -36,6 +36,8 @@ class MyPreferenceFragment : PreferenceFragmentCompat() {
                 "distance" -> distance = preferences.getInt(key,defValue1)
                 "frequency" -> frequency = preferences.getInt(key,defValue2)
             }
+            viewModel.updateSettings(distance,frequency)
+            //Log.d("DistAndFreq","${viewModel.getDistance()},${viewModel.getFrequency()}")
         }
     }
 

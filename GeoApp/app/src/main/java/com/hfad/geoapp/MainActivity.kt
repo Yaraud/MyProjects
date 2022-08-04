@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.hfad.geoapp.databinding.ActivityMainBinding
 
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val appBarConfiguration = AppBarConfiguration
+            .Builder(R.id.pointsFragment, R.id.settingsFragment, R.id.mapsFragment)
+            .build()
         onNewIntent(intent)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,8 +41,7 @@ class MainActivity : AppCompatActivity() {
         bundle.putFloat("longitude", longitude)
         navController.setGraph(R.navigation.nav_graph,bundle)
 
-        setupActionBarWithNavController(navController)
-
+        setupActionBarWithNavController(navController,appBarConfiguration)
     }
 
     override fun onRestart() {
