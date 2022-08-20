@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/settings_item"
+        android:enabled="true"
+        android:icon="@drawable/baseline_settings_black_24"
+        android:title="@string/settings"/>
+    <item
+        android:id="@+id/quotes_item"
+        android:enabled="true"
+        android:icon="@drawable/baseline_article_black_24"
+        android:title="@string/quotes"/>
+</menu>
