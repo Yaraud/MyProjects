@@ -1,0 +1,42 @@
+//    private fun isLocationEnabled(): Boolean{
+//        val locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+//        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+//                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+//    }
+//
+//    private fun getLastLocation(){
+//            if(isLocationEnabled()){
+//                fusedLocationClient.lastLocation.addOnCompleteListener { task ->
+//                    val location = task.result
+//                    if (location == null){
+//                        getNewLocation()
+//                    }else{
+//                        myLatitude = location.latitude
+//                        myLongitude = location.longitude
+//                    }
+//                }
+//            }else{
+//                Toast.makeText(context,"enable your location service",Toast.LENGTH_SHORT).show()
+//            }
+//    }
+
+//    private fun getNewLocation(){
+//        locationRequest = LocationRequest.create().apply {
+//            interval = viewModel.getFrequency().toLong() * 60000
+//            fastestInterval = viewModel.getFrequency().toLong() * 60000
+//        }
+//        fusedLocationClient.requestLocationUpdates(
+//            locationRequest,locationCallback,Looper.myLooper()
+//        )
+//    }
+//    private val locationCallback = object : LocationCallback() {
+//        override fun onLocationResult(locationResult: LocationResult) {
+//            val lastLocation = locationResult.lastLocation
+//            if (lastLocation != null) {
+//                myLatitude = lastLocation.latitude
+//                myLongitude = lastLocation.longitude
+//
+//            }
+//
+//        }
+//    }
