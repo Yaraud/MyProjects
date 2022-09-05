@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="plus_img">Plus</string>
+    <string name="reminder">Напоминание</string>
+    <string name="delete">Удалить</string>
+    <string name="title_pattern">Title</string>
+    <string name="check">Сохранить</string>
+    <string name="text">Text</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
