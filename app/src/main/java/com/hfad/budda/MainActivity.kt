@@ -1,6 +1,9 @@
 package com.hfad.budda
 
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -12,11 +15,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import androidx.lifecycle.lifecycleScope
 import com.hfad.budda.databinding.ActivityMainBinding
 import com.hfad.budda.ui.viewmodels.QuoteViewModel
 import com.hfad.budda.ui.viewmodels.QuoteViewModelFactory
-import kotlinx.coroutines.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,10 +32,8 @@ class MainActivity : AppCompatActivity() {
             (application as BuddhaApplication).database.settingsDao()
         )
     }
+
     private lateinit var binding: ActivityMainBinding
-    private var job: Job? = null
-    private lateinit var service: QuoteService
-    private lateinit var serviceIntent: Intent
 
     private inline fun <reified T> addFragment() where T : Fragment{
         for (fragment in supportFragmentManager.fragments) {
@@ -45,8 +44,6 @@ class MainActivity : AppCompatActivity() {
             add<T>(R.id.fragment)
         }
     }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
             builder.show()
         }
+
         val num = viewModel.numOfQuotes()
         if(num == 0) {
             val quotes = "Боль неизбежна. Но страдание — личный выбор каждого.\n" +
@@ -138,51 +136,71 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRestart() {
-        service = QuoteService()
-        serviceIntent = Intent(this@MainActivity, service.javaClass)
-        stopService(serviceIntent)
-        job?.cancel()
-        job = null
-        super.onRestart()
+    private fun setAlarm(triggerTime: Long, code: Int){
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val ids = viewModel.getQuoteIds()
+        val intent = Intent(this, NotifyAlarm::class.java)
+        if (ids.isNotEmpty())
+            intent.putExtra("quote", viewModel.getQuote(ids.random()))
+        else
+            intent.putExtra("quote","No any quote")
+        val pendingIntent = PendingIntent.getBroadcast(
+            this, code, intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_CANCEL_CURRENT)
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            triggerTime,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent)
+       // Toast.makeText(this, "Alarm is set", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun cancelAlarm() {
+        for (i in 1..viewModel.getInterval()!!) {
+            val pendingIntent = PendingIntent.getBroadcast(
+                this,
+                i,
+                Intent(this, NotifyAlarm::class.java),
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_NO_CREATE
+            )
+            pendingIntent?.cancel()
+            //Toast.makeText(this, "Alarm is stopped", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        cancelAlarm()
     }
 
     override fun onStop() {
         super.onStop()
+        Log.d("nott","stopped")
         if (viewModel.getNotify() == true) {
-            Log.d("nott", "true")
-            job = lifecycleScope.launch {
-                service = QuoteService()
-                serviceIntent = Intent(this@MainActivity, service.javaClass)
-                var quotes = ""
-                viewModel.allQuotes().collect { list ->
-                    for (quote in list) {
-                        quotes = quotes.plus("${quote.text}\n")
-                    }
-                    val firstTimeStrings = viewModel.getFirstTime().split(":")
-                    val secondTimeStrings = viewModel.getSecondTime().split(":")
-                    val firstTime =
-                        (firstTimeStrings[0].toInt() * 60 + firstTimeStrings[1].toInt()) * 60000
-                    val secondTime =
-                        (secondTimeStrings[0].toInt() * 60 + secondTimeStrings[1].toInt()) * 60000
-                    val ids = viewModel.getQuoteIds()
-                    serviceIntent.putExtra("quotes", quotes)
-                    serviceIntent.putExtra("firstTime", firstTime)
-                    serviceIntent.putExtra("secondTime", secondTime)
-                    serviceIntent.putExtra("ids", ids)
-                    serviceIntent.putExtra("interval", viewModel.getInterval())
-                    startService(serviceIntent)
-                }
 
+            val firstTimeStrings = viewModel.getFirstTime().split(":")
+            val secondTimeStrings = viewModel.getSecondTime().split(":")
+            val firstTime =
+                (firstTimeStrings[0].toInt() * 60 + firstTimeStrings[1].toInt()) * 60000
+            val secondTime =
+                (secondTimeStrings[0].toInt() * 60 + secondTimeStrings[1].toInt()) * 60000
+            val countDownInterval: Long =
+                if(firstTime < secondTime)
+                    ((secondTime - firstTime) / viewModel.getInterval()!!).toLong()
+                else
+                    ((24*60*60*1000 - (firstTime - secondTime)) / viewModel.getInterval()!!).toLong()
+
+            val calendar = Calendar.getInstance()
+            calendar[Calendar.HOUR_OF_DAY] = firstTimeStrings[0].toInt()
+            calendar[Calendar.MINUTE] = firstTimeStrings[1].toInt()
+            calendar[Calendar.SECOND] = 0
+            Log.d("nott","CountDown $countDownInterval")
+            Log.d("nott","Calendar ${calendar.timeInMillis}")
+            Log.d("nott","Current ${System.currentTimeMillis()}")
+            for (i in 1..viewModel.getInterval()!!) {
+                setAlarm(calendar.timeInMillis + countDownInterval * i, i)
             }
         }
     }
-
-    override fun onDestroy() {
-        job?.cancel()
-        job = null
-        stopService(serviceIntent)
-        super.onDestroy()
-    }
-
 }

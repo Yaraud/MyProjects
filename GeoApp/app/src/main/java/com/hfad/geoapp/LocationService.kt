@@ -34,9 +34,9 @@ class LocationService : Service() {
                 myLatitude = location.latitude
                 myLongitude = location.longitude
                 Log.d("DEBUG interval","${locationRequest.interval}")
-                Toast.makeText(this@LocationService, "Latitude: $myLatitude\n" +
-                        "Longitude: $myLongitude, ${locationRequest.interval}", Toast.LENGTH_LONG)
-                    .show()
+//                Toast.makeText(this@LocationService, "Latitude: $myLatitude\n" +
+//                        "Longitude: $myLongitude, ${locationRequest.interval}", Toast.LENGTH_LONG)
+//                    .show()
 
             }
         }
@@ -60,6 +60,8 @@ class LocationService : Service() {
         super.onStartCommand(intent, flags, startId)
         return START_STICKY
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

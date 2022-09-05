@@ -1,7 +1,6 @@
 package com.hfad.budda
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
@@ -24,7 +23,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.layout_settings, rootKey)
-        //val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
         val preferenceCategory = findPreference<PreferenceCategory>("category")
 
@@ -75,7 +73,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
          */
 
         val isNotifyEnabled = findPreference<CheckBoxPreference>("notify_check")
-        Log.d("nott","${isNotifyEnabled?.isChecked}")
         isNotifyEnabled?.setOnPreferenceChangeListener { _, _ ->
             if(isNotifyEnabled.isChecked) {
                 isNotifyEnabled.isChecked = false
@@ -85,7 +82,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 isNotifyEnabled.isChecked = true
                 viewModel.updateNotify(true)
             }
-            Log.d("nott","${isNotifyEnabled.isChecked}")
 
             return@setOnPreferenceChangeListener true
         }

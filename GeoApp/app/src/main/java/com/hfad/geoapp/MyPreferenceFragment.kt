@@ -20,8 +20,6 @@ class MyPreferenceFragment : PreferenceFragmentCompat() {
 
     private var distance: Int = 100
     private var frequency: Int = 1
-    fun getDistance(): Int = distance
-    fun getFrequency(): Int = frequency
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.layout_settings, rootKey)

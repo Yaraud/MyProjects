@@ -11,8 +11,8 @@ import com.hfad.geoapp.database.settings.SettingsDao
 
 @Database(entities = [Point::class,Settings::class], version = 2)
 abstract class AppDatabase: RoomDatabase() {
-    abstract  fun pointDao(): PointDao
-    abstract  fun settingsDao(): SettingsDao
+    abstract fun pointDao(): PointDao
+    abstract fun settingsDao(): SettingsDao
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
@@ -25,7 +25,6 @@ abstract class AppDatabase: RoomDatabase() {
                     .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
-
                 instance
             }
         }

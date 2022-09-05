@@ -17,7 +17,7 @@ class QuoteViewModel(private val quoteDao: QuoteDao,
     fun deleteQuote(text: String) = quoteDao.deleteQuote(text)
 
     fun getQuoteIds(): IntArray = quoteDao.getQuoteIds()
-    //fun getQuote(id: Int): String = quoteDao.getQuote(id)
+    fun getQuote(id: Int): String = quoteDao.getQuote(id)
 
     /**
      * Settings

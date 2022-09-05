@@ -17,8 +17,13 @@
         <entry key="..\:/android(projects)/GeoApp/app/src/main/res/menu/delete_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/android(projects)/GeoApp/app/src/main/res/xml-v26/layout_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/android(projects)/GeoApp/app/src/main/res/xml/layout_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_projects/GeoApp/app/src/main/res/drawable/layout_border.xml" value="0.261" />
+        <entry key="..\:/android_projects/GeoApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/GeoApp/app/src/main/res/layout/fragment_maps.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_projects/GeoApp/app/src/main/res/layout/fragment_points.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/GeoApp/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_projects/GeoApp/app/src/main/res/layout/point_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_projects/GeoApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/GeoApp/app/src/main/res/xml/layout_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/GeoApp/app/src/main/res/xml/root_preferences.xml" value="0.36666666666666664" />
       </map>
