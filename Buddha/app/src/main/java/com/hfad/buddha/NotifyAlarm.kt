@@ -20,7 +20,7 @@ class NotifyAlarm: BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             @SuppressLint("WrongConstant") val notificationChannel = NotificationChannel(
                 MainActivity.NOTIFICATION_CHANNEL_ID,
-                "My Notifications",
+                "MyNotifications",
                 NotificationManager.IMPORTANCE_MAX
             )
             notificationChannel.description = "Quote Channel"
