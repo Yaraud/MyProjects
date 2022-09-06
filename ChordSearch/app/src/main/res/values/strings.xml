@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ChordSearch</string>
+    <string name="fingerboard">fingerboard</string>
+    <string name="firstString">firstString</string>
+    <string name="secondString">secondString</string>
+    <string name="thirdString">thirdString</string>
+    <string name="fourthString">fourthString</string>
+    <string name="fifthString">fifthString</string>
+    <string name="sixthString">sixthString</string>
+    <string name="search">Search</string>
+</resources>
