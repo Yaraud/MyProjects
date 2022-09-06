@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android_projects/Buddha/app/src/main/res/drawable/ic_launcher_background.xml" value="0.275" />
+        <entry key="..\:/android_projects/Buddha/app/src/main/res/drawable/layout_dark_border.xml" value="0.275" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/drawable/layout_light_border.xml" value="0.25" />
+        <entry key="..\:/android_projects/Buddha/app/src/main/res/layout/activity_edit_quote.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/layout/activity_full_quote.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/layout/fragment_quote.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/layout/quote_item.xml" value="0.365625" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_projects/Buddha/app/src/main/res/menu/edit_quote_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/android_projects/Buddha/app/src/main/res/xml/layout_settings.xml" value="0.36666666666666664" />
       </map>
     </option>

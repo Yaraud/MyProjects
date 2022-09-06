@@ -8,19 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hfad.buddha.database.quotes.Quote
 import com.hfad.buddha.databinding.QuoteItemBinding
 import com.hfad.buddha.viewmodels.QuoteViewModel
+import java.io.File
 
 class QuoteAdapter(
-    private val onItemClicked: (Quote) -> Unit,
+    private val onItemClicked: (String) -> Unit,
     private val onLongItemClicked: (String) -> Unit,
     private val viewModel: QuoteViewModel
-) : ListAdapter<Quote, QuoteAdapter.QuoteViewHolder>(DiffCallback) {
+) : ListAdapter<String, QuoteAdapter.QuoteViewHolder>(DiffCallback) {
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<Quote>() {
-            override fun areItemsTheSame(oldItem: Quote, newItem: Quote): Boolean {
-                return oldItem.id == newItem.id
+        private val DiffCallback = object : DiffUtil.ItemCallback<String>() {
+            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+                return oldItem == newItem
             }
-            override fun areContentsTheSame(oldItem: Quote, newItem: Quote): Boolean {
+            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
                 return oldItem == newItem
             }
         }
@@ -40,7 +41,7 @@ class QuoteAdapter(
         }
         viewHolder.itemView.setOnLongClickListener {
             val position = viewHolder.adapterPosition
-            onLongItemClicked(getItem(position).text)
+            onLongItemClicked(getItem(position))
             return@setOnLongClickListener true
         }
         return viewHolder
@@ -54,8 +55,8 @@ class QuoteAdapter(
         private val binding: QuoteItemBinding,
         private val viewModel: QuoteViewModel
     ): RecyclerView.ViewHolder(binding.root){
-        fun bind(quote: Quote){
-            binding.quoteText.text = quote.text
+        fun bind(quote: String){
+            binding.quoteText.text = quote
             if(viewModel.getTheme() == true) {
                 binding.layout.setBackgroundResource(R.drawable.layout_dark_border)
                 binding.quoteText.setTextAppearance(R.style.MainLightText)

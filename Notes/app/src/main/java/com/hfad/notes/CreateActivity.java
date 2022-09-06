@@ -14,9 +14,10 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class CreateActivity extends AppCompatActivity {
 
-    int noteId = 0;
     public Menu main_menu;
     SQLiteDatabase db;
     SQLiteOpenHelper databaseHelper;
@@ -29,7 +30,7 @@ public class CreateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
     }

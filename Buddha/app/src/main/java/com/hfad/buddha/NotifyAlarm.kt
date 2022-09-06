@@ -11,6 +11,7 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import java.io.File
 
 class NotifyAlarm: BroadcastReceiver() {
     private fun createNotification(quote: String,context: Context) {
@@ -34,6 +35,10 @@ class NotifyAlarm: BroadcastReceiver() {
             context, 0, resultIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
+        val snoozeIntent = Intent(context, NotifyAlarm::class.java)
+            snoozeIntent.putExtra("quote", "888")
+        val nextIntent = PendingIntent.getBroadcast(context,0, snoozeIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         val notificationBuilder: NotificationCompat.Builder =
             NotificationCompat.Builder(context, MainActivity.NOTIFICATION_CHANNEL_ID)
@@ -43,12 +48,20 @@ class NotifyAlarm: BroadcastReceiver() {
             .setContentTitle(quote)
             .setContentText("Tap to open the quote")
             .setContentIntent(resultPendingIntent)
+            .addAction(R.drawable.baseline_navigate_next_black_20,"Next",nextIntent)
         notificationManager!!.notify(1, notificationBuilder.build())
 
     }
     override fun onReceive(context: Context, intent: Intent?) {
-        val quote = intent?.getStringExtra("quote")
-        createNotification(quote!!,context)
-        Log.d("nott","$quote")
+        val quote: String
+        val path = context.filesDir
+        val file = File(path, "quotes_file.txt")
+        val quotes = file.readText().split("\n")
+        val ids = file.readText().split("\n").size - 1
+        quote = if (ids != 0)
+            quotes[(0..ids).random()]
+        else
+            "No any quote"
+        createNotification(quote,context)
     }
 }

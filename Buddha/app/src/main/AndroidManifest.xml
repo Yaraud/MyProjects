@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hfad.buddha">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".BuddhaApplication"
         android:allowBackup="true"
@@ -14,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buddha"
         tools:targetApi="31">
+        <activity
+            android:name=".EditQuoteActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".FullQuoteActivity"
             android:exported="false"
@@ -31,6 +38,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name=".NotifyNext"
+            android:enabled="true" />
         <receiver
             android:name=".NotifyAlarm"
             android:enabled="true" />

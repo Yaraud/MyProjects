@@ -16,7 +16,7 @@ class NumberPickerPreference(context: Context,
         val builder: AlertDialog.Builder? = context?.let { AlertDialog.Builder(it) }
         numberPicker = NumberPicker(context)
         numberPicker.minValue = 1
-        numberPicker.maxValue = 10
+        numberPicker.maxValue = 24
         builder?.setView(numberPicker)
         builder?.setTitle("Choose number of repeats")
         builder?.setPositiveButton("OK") { _, _ ->

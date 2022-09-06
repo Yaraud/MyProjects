@@ -61,9 +61,7 @@ public class MainActivity extends AppCompatActivity {
                                     {String.valueOf(cursor.getInt(cursor.getColumnIndex("_id")))});
                             recreate();
                         })
-                        .setNegativeButton("Отмена", (dialog, i) -> {
-                            dialog.cancel();
-                        })
+                        .setNegativeButton("Отмена", (dialog, i) -> dialog.cancel())
                         .show();
                 return true;
             });
@@ -85,11 +83,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             databaseHelper = new DatabaseHelper(this);
             db = databaseHelper.getWritableDatabase();
-            Cursor newCursor = db.query("DRINK",
+            cursor = db.query("DRINK",
                     new String[]{"_id", "NAME"},
                     null,
                     null, null, null, null);
-            cursor = newCursor;
         } catch (SQLiteException e) {
             Toast toast = Toast.makeText(this, "Database unavailable",
                     Toast.LENGTH_SHORT);
