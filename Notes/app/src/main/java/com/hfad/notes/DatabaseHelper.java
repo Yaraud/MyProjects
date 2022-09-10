@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE NOTE (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        db.execSQL("CREATE TABLE NOTE ( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "TITLE TEXT," +
                 "DESCRIPTION TEXT);");
     }
@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 4) {
-            db.execSQL("CREATE TABLE NOTE (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            db.execSQL("CREATE TABLE NOTE ( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "TITLE TEXT," +
                     "DESCRIPTION TEXT);");
         }
