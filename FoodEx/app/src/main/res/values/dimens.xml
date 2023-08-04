@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="log_in_button_height">60dp</dimen>
+    <dimen name="log_in_button_paddings">36dp</dimen>
+
+    <dimen name="font_large">20sp</dimen>
+    <dimen name="font_normal">16sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+
+    <dimen name="text_input_layout_width_wide">500dp</dimen>
+    <dimen name="text_input_layout_width_normal">300dp</dimen>
+    <dimen name="text_input_layout_width_tight">200dp</dimen>
+
+    <dimen name="text_input_layout_height_tall">150dp</dimen>
+    <dimen name="text_input_layout_height_normal">90dp</dimen>
+    <dimen name="text_input_layout_height_short">70dp</dimen>
+
+    <dimen name="edit_text_height_tall">75dp</dimen>
+    <dimen name="edit_text_height_normal">55dp</dimen>
+    <dimen name="edit_text_height_short">35dp</dimen>
+
+    <dimen name="button_height_tall">70dp</dimen>
+    <dimen name="button_height_normal">50dp</dimen>
+    <dimen name="button_height_short">30dp</dimen>
+</resources>

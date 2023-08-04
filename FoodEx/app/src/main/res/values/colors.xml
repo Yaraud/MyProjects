@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="amber_primary">#de9f00</color>
+    <color name="amber_light">#ffcf47</color>
+    <color name="amber_dark">#a67000</color>
+    <color name="green_primary">#03a85b</color>
+    <color name="green_dark">#007830</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#616161</color>
+    <color name="dark_gray">#535353</color>
+</resources>

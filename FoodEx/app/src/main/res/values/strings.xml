@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">FoodEx</string>
+    <string name="menu_str">Menu</string>
+    <string name="account_str">Account</string>
+    <string name="basket_str">Basket</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="log_in">Log In</string>
+    <string name="log_in_text">Haven\'t you still logged in?</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_email">Email(optional)</string>
+    <string name="hint_address">Address(*Street,*House,Apartment)</string>
+    <string name="label_text_view">Enter your personal data</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="wrong_email_syntax">Wrong email syntax</string>
+    <string name="wrong_phone_syntax">Wrong phone syntax</string>
+    <string name="wrong_address_syntax">Wrong address syntax</string>
+    <string name="no_name">Please enter a name</string>
+    <string name="no_phone">Please enter a phone</string>
+    <string name="no_email">Please enter a email</string>
+    <string name="no_address">Please enter an address</string>
+    <string name="welcome_label">Welcome,</string>
+    <string name="phone_number_label">Phone number:</string>
+    <string name="email_address_label">Email address:</string>
+    <string name="delivery_address_label">Delivery address:</string>
+    <string name="exit_btn">Delete</string>
+    <string name="name_hint">Name</string>
+    <string name="weight_hint">500 g</string>
+    <string name="price_hint">10$</string>
+    <string name="itemimg_contDisc">itemImg</string>
+    <string name="to_basket_btn">To basket</string>
+    <string name="ing_hint">bread,meat</string>
+    <string name="hint_1">1</string>
+    <string name="items_in_basket">itemsinbasket</string>
+    <string name="empty_text">It\'s still empty here.</string>
+    <string name="internet_connection">Check your internet connection</string>
+    <string name="credit_card">Credit card</string>
+    <string name="cash">Cash</string>
+    <string name="payment_text">Choose way of payment</string>
+    <string name="reload_btn">Reload</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="_1">1</string>
+</resources>

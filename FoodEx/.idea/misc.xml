@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/custom_btn_add.xml" value="0.27" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/custom_btn_remove.xml" value="0.25" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/custom_radio.xml" value="0.284" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/ic_add_circle_full.xml" value="0.27" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/ic_add_circle_outline.xml" value="0.27" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/ic_remove_circle_full.xml" value="0.27" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/ic_remove_circle_outline.xml" value="0.27" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/drawable/layout_border.xml" value="0.27" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/activity_item.xml" value="0.2328125" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/basket_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/fragment_account.xml" value="0.2833333333333333" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/fragment_basket.xml" value="0.29739583333333336" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/fragment_basket2.xml" value="0.2833333333333333" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/fragment_log_in.xml" value="0.25" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/fragment_menu.xml" value="0.25" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/fragment_money_pop_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/fragment_pop_up.xml" value="0.33" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/item_item.xml" value="0.33" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/menu_item.xml" value="0.22" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/layout/plus_minus_btn.xml" value="0.33" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/menu/bottom_nav_menu.xml" value="0.365625" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/menu/search_menu.xml" value="0.18802083333333333" />
+        <entry key="..\:/android_projects/FoodEx/app/src/main/res/menu/settings_menu.xml" value="0.2703125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
